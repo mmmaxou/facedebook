@@ -3,6 +3,5 @@
 // Et on oublie pas de fermer le body
 ?>
 
-
-</body>
+    </body>
 </html>

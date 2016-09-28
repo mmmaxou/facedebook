@@ -9,7 +9,7 @@ include("../divers/balises.php");
 
 
 
-include("entete.php");
+
 
 // Il faut faire des requêtes pour afficher ses amis, les attentes, les gens qu'on a invités qui ont pas répondu etc..
 // Elles sont listées ci-dessous
@@ -18,6 +18,13 @@ include("entete.php");
   
 ?>
 
+<form action='../traitement/connexion.php' method='POST'>
+    <input type='text' name='login'>
+    <input type='password' name='pwd'>
+    <input type='submit' value='Connexion'>
+    Se souvenir de moi : 
+    <input type='checkbox' name='remember'>
+</form>
 
 
 <?php

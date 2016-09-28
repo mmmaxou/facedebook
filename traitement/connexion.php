@@ -35,6 +35,6 @@
             
         }
         // Si ça marche on est redirigé vers son mur
-        header("Location:mur.php?id=".$_SESSION['id']);
+        header("Location:../affichage/mur.php?id=".$_SESSION['id']);
     }
 ?>

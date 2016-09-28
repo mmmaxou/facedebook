@@ -5,7 +5,7 @@ include("../divers/balises.php");
 
 if(!isset($_SESSION['id'])) {
 	// On n'est pas connecté, il faut retourner à la page de login
-	header("Location:login.php");
+	header("Location:../affichage/login.php");
 }
 
 // D'abord il faut être sur que l'on est ni ami, ni en attente, ni banni
@@ -16,12 +16,14 @@ if(!isset($_SESSION['id'])) {
 // Le quatrième paramètre $_SESSION['id']
 // Si il y a une réponse il n'y a rien à faire.
 
-$sql = "SELECT * FROM lien WHERE (idUtilisateur1=? AND idUtilisateur2=?) OR  (idUtilisateur1=? AND idUtilisateur2=?)";
+$sql = "SELECT * FROM lien WHERE (idUtilisateur1=? AND idUtilisateur2=?) OR (idUtilisateur1=? AND idUtilisateur2=?)";
 $query = $pdo->prepare($sql);
 $query->execute( array($_SESSION['id'], $_POST['id'], $_POST['id'], $_SESSION['id']) );
 $line = $query->fetch();
 
-if ( $line != false ) {
+renderArray($line);
+
+if ( $line == false && $_SESSION['id'] != $_POST['id']) {
     
     // La requete de demande de creation amitie : INSERT INTO lien VALUES(?,?,"attente");
     // Le premier parametre de la requête est le SESSION['id'] : celui qui a demandé l'amitié
@@ -30,9 +32,15 @@ if ( $line != false ) {
     $sql = "INSERT INTO lien VALUES(?,?,'attente')";
     $query = $pdo->prepare($sql);
     $query->execute( array($_SESSION['id'], $_POST['id']) );
+    echo "ami ajouté";
     
 }
+else {
+    echo "erreur";
+}
 
+renderArray($_SESSION);
+renderArray($_POST);
 // A la fin on retourne à la page d'amitié : 
-header("Location:affichage/ami.php");
+//header("Location:../affichage/ami.php");
 ?>

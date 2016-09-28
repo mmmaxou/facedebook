@@ -29,7 +29,7 @@ if ( $line == false && $_SESSION['id'] != $_POST['id']) {
     // Le premier parametre de la requête est le SESSION['id'] : celui qui a demandé l'amitié
     // Le second parametre de la requete est le $_POST['id'] 
     
-    $sql = "INSERT INTO lien VALUES(?,?,'attente')";
+    $sql = "INSERT INTO lien VALUES(NULL,?,?,'attente')";
     $query = $pdo->prepare($sql);
     $query->execute( array($_SESSION['id'], $_POST['id']) );
     echo "ami ajouté";
@@ -42,5 +42,5 @@ else {
 renderArray($_SESSION);
 renderArray($_POST);
 // A la fin on retourne à la page d'amitié : 
-//header("Location:../affichage/ami.php");
+header("Location:../affichage/ami.php");
 ?>

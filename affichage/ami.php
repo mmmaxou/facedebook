@@ -35,8 +35,7 @@ include("entete.php");
 // SELECT utilisateur.* FROM utilisateur INNER JOIN lien ON idUtilisateur1=utilisateur.id AND etat='ami' AND idUTilisateur2=? UNION SELECT utilisateur.* FROM utilisateur INNER JOIN lien ON idUtilisateur2=utilisateur.id AND etat='ami' AND idUTilisateur1=?
 // Les deux paramètres sont le $_SESSION['id']
 
-
-
+    
 
 ?>
 

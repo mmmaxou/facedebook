@@ -29,16 +29,21 @@ if($_GET['id']==$_SESSION['id']) {
 
 	// les deux ids à tester sont : $_GET['id'] et $_SESSION['id']		
 	// A completer. Il faut récupérer une ligne, si il y en a pas ca veut dire que l'on est pas ami avec cette personne
-	
+    
+    $query=$pdo->prepare($sql);
+    $query->execute( array($_GET['id'], $_SESSION['id'], $_SESSION['id'], $_GET['id']));
+    
+    $line = $query->fetch();
+    
+    if ( $line == false ) {
+        $ok = false;
+    }
 
 }
 if($ok==false) {
-	echo "Vous n'êtes aps encore ami, vous ne pouvez voir son mur !!";
+	echo "Vous n'êtes pas encore ami, vous ne pouvez voir son mur !!";
 	die(1);
 }
-
-
-
 
 // Tout va bien, il maintenant possible d'afficher le mur en question.
 // A completer
@@ -46,6 +51,19 @@ if($ok==false) {
 // SELECT * FROM ecrit WHERE idAmi=?
 // le paramètre  est le $_GET['id']
 
+$sql = "SELECT * FROM ecrit WHERE idAmi=?";
+$query=$pdo->prepare($sql);
+$query->execute($_GET['id']);
+
+while ($line = $query->fetch()) {
+    
+    function afficherPost($line);
+    
+}
+
+function afficherPost( $data ) {
+    renderArray( $data );
+}
 
 
 ?>

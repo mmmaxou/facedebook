@@ -22,6 +22,8 @@ include("menu.php");
 
 // On veut affchier notre mur ou celui d'un de nos amis et pas faire n'importe quoi 
 
+renderArray($_SESSION);
+    
 $ok = false;
 if($_GET['id']==$_SESSION['id']) {
 	$ok = true; // C notre mur, pas de soucis

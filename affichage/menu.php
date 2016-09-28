@@ -14,7 +14,7 @@ echo lien("ami.php", "Mes amis");
 
 
 <form method="get" action="../traitement/deconnexion.php">
-    <input type="submit" name="action" value="Deconnexion"> 
+    <input type="submit" name="action" value="deconnexion"> 
 </form>
 
 <form method="post" action="../traitement/demanderamitie.php">

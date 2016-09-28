@@ -59,17 +59,31 @@ $query=$pdo->prepare($sql);
 $query->execute(array($_GET['id']));
 
 while ($line = $query->fetch()) {
+
+    $sql = "SELECT * FROM utilisateur WHERE id=".$line["idAuteur"];
+    $query = $pdo->prepare($sql);
+    $query->execute();
+    $auteur = $query->fetch();
     
-    afficherPost( $line );
+    afficherPost( $line, $auteur );
     
 }
 
-function afficherPost( $data ) {
-    renderArray( $data );
+function afficherPost( $data, $auteur) {
+    echo "<fieldset>";
     
     echo $data["titre"]."<br/>";
     echo $data["contenu"]."<br/>";
     echo $data["dateEcrit"]."<br/>";
+    echo "auteur : ".$auteur["login"]."<br/>";
+    
+    if (isset($data['image'])) {
+        echo "il y a une image";
+    } else {
+        echo "il n'y a pas d'image";
+    }
+    
+    echo "</fieldset>";
     
 }
 

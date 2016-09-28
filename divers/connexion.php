@@ -14,16 +14,10 @@ $passwd="h7IopQ9V";
 */
 
 //connexion en local 
-$host="localhost"; // le chemin vers le serveur (localhost dans 99% des cas)
-
-$db="facebook"; // le nom de votre base de données.
-            // A l IUT, 3 possibilité prenomnom prenomnom1... 
-
-$user="root"; // nom d utilisateur pour se connecter
-              // A l iut prenom.nom	
-
-$passwd=""; // mot de passe de l utilisateur pour se connecter
-            // A l iut, généré automatiquement
+$host="localhost"; 
+$db="facebook"; 
+$user="root";
+$passwd=""; 
 
 try {
 	// On essaie de créer une instance de PDO.

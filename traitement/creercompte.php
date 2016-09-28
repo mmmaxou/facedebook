@@ -11,5 +11,5 @@ include("../divers/balises.php");
 
 // Ca serait bien d'être loggé !
 // A la fin on retourne à la page d'amitié :  il faut bien se faire des amis !
-header("Location:affichage/ami.php");
+header("Location:affichage/mur.php");
 ?>

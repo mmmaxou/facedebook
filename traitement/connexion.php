@@ -9,7 +9,7 @@
         $query -> execute(array($_COOKIE['login']));
         $line = $query-> fetch();
         if($line == false)
-            header("Location:connexion.php");
+            header("Location:../affichage/login.php");
         $_SESSION['id'] = $line['id'];
         $_SESSION['login'] = $line['login'];
         
@@ -22,7 +22,7 @@
         $query -> execute(array($_POST['login'],$_POST['pwd']));   
         $line = $query->fetch();
         if($line == false)
-            header("Location:connexion.php");
+            header("Location:../affichage/login.php");
         $_SESSION['id']= $line['id'];
         $_SESSION['login'] = $line['login'];
         //si la case remember est cochée, on set un cookie 
@@ -34,7 +34,7 @@
             $query ->execute(array($u,$line['id']));
             
         }
-        renderArray($_SESSION);
+        header("Location:../affichage/mur.php");
     }
     
 

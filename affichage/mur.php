@@ -57,7 +57,7 @@ $query->execute($_GET['id']);
 
 while ($line = $query->fetch()) {
     
-    function afficherPost($line);
+    afficherPost($line);
     
 }
 

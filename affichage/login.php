@@ -25,7 +25,18 @@ include("../divers/balises.php");
     Se souvenir de moi : 
     <input type='checkbox' name='remember'>
 </form>
+<br/>
+<br/>
 
+<form action='../traitement/creercompte.php' method='POST'>
+    Veuillez rentrer votre Login : 
+    <input type='text' name='login'><br/>
+    Tapez votre mdp
+    <input type='password' name='password'></br>
+    Encore fdp
+    <input type='password' name='passwordConfirm'></br>
+    <input type='submit' value='Connexion'>
+</form>
 
 <?php
 

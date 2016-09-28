@@ -34,13 +34,7 @@
             $query ->execute(array($u,$line['id']));
             
         }
-        header("Location:../affichage/mur.php");
+        // Si ça marche on est redirigé vers son mur
+        header("Location:mur.php?id=".$_SESSION['id']);
     }
-    
-
-
-    // Si ça marche on est redirigé vers son mur
-
-
-   // header("Location:mur.php?id=".$_SESSION['id']);
 ?>

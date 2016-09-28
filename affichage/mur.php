@@ -8,7 +8,6 @@ if(!isset($_SESSION['id'])) {
 	header("Location:login.php");
 }
 
-
 include("entete.php");
 
 if(!isset($_GET['id']) || !is_numeric($_GET['id'])) {
@@ -16,6 +15,10 @@ if(!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 	// On affiche un message et on meurt
 	echo "Bizarre !!!!";die(1);
 }
+
+// On affiche le menu
+include("menu.php");
+
 
 // On veut affchier notre mur ou celui d'un de nos amis et pas faire n'importe quoi 
 
@@ -53,16 +56,21 @@ if($ok==false) {
 
 $sql = "SELECT * FROM ecrit WHERE idAmi=?";
 $query=$pdo->prepare($sql);
-$query->execute($_GET['id']);
+$query->execute(array($_GET['id']));
 
 while ($line = $query->fetch()) {
     
-    afficherPost($line);
+    afficherPost( $line );
     
 }
 
 function afficherPost( $data ) {
     renderArray( $data );
+    
+    echo $data["titre"]."<br/>";
+    echo $data["contenu"]."<br/>";
+    echo $data["dateEcrit"]."<br/>";
+    
 }
 
 

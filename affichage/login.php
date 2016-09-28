@@ -28,7 +28,7 @@ include("../divers/balises.php");
 <br/>
 <br/>
 
-<form action='../traitement/login.php' method='POST'>
+<form action='../traitement/creercompte.php' method='POST'>
     Veuillez rentrer votre Login : 
     <input type='text' name='login'><br/>
     Tapez votre mdp

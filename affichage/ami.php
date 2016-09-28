@@ -24,6 +24,17 @@ include("entete.php");
 // SELECT utilisateur.* FROM utilisateur INNER JOIN lien ON utilisateur.id=idUtilisateur2 AND etat='attente' AND idUtilisateur1=?
 // Paramètre 1 : le $_SESSION['id']
 
+echo 'les gens que tu as invités et qui n\'ont pas répondus : <br/>';
+
+$sql = "SELECT utilisateur.* FROM utilisateur INNER JOIN lien ON utilisateur.id=idUtilisateur2 AND etat='attente' AND idUtilisateur1=?";
+$query = $pdo -> prepare($sql);
+$query->execute( array( $_SESSION['id'] ) );
+
+while ( $line = $query->fetch() ) {
+//    renderArray($line);
+    echo $line['login']."<br/>";
+    
+}
 
 // Connaitre les gens qui nous ont invité et pour lequel on a pas répondu 
 // SELECT utilisateur.* FROM utilisateur WHERE id IN(SELECT idUtilisateur1 FROM lien WHERE idUtilisateur2=? AND etat='attente'
@@ -35,7 +46,21 @@ include("entete.php");
 // SELECT utilisateur.* FROM utilisateur INNER JOIN lien ON idUtilisateur1=utilisateur.id AND etat='ami' AND idUTilisateur2=? UNION SELECT utilisateur.* FROM utilisateur INNER JOIN lien ON idUtilisateur2=utilisateur.id AND etat='ami' AND idUTilisateur1=?
 // Les deux paramètres sont le $_SESSION['id']
 
-    
+
+/*
+$sql = "SELECT * FROM utilisateur WHERE id IN (SELECT utilisateur.* FROM utilisateur INNER JOIN lien ON idUtilisateur1=utilisateur.id AND etat='ami' AND idUTilisateur2=? UNION SELECT utilisateur.* FROM utilisateur INNER JOIN lien ON idUtilisateur2=utilisateur.id AND etat='ami' AND idUTilisateur1=?)";
+$query = $pdo->prepare($sql);
+$query->execute(array($_SESSION['id'], $_SESSION['id']));
+*/
+
+echo "vos amis : (unfinished)<br/>";
+/*
+
+while ( $line = $query->fetch() ) {
+    renderArray( $line );
+}
+
+*/
 
 ?>
 

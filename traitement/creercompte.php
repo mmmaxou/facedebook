@@ -17,11 +17,20 @@ if(isset($_POST['login'])){
     }
     else{
         if(isset($_POST['password']) && isset($_POST['passwordConfirm']) && $_POST['password'] == $_POST['passwordConfirm']){
-            $sql = "INSERT INTO utilisateur VALUES(NULL,?,md5(?))";
+            $sql = "INSERT INTO utilisateur VALUES(NULL,?,md5(?),NULL)";
             $query = $pdo->prepare($sql);
             $query -> execute(array($_POST['login'],$_POST['password']));
+            
+           
+            $sql = "SELECT * FROM utilisateur WHERE login=?";
+            $query = $pdo-> prepare($sql);
+            $query -> execute(array($_POST['login']));
+            $line = $query->fetch();
+            
             //rédiger les sessions id login
-            header("Location:../affichage/mur.php");
+            $_SESSION['id'] = $line['id'];
+            $_SESSION['login'] = $_POST['login'];
+            header("Location:../affichage/mur.php?id=".$_SESSION['id']);
         }
     }
     

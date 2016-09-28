@@ -15,7 +15,7 @@ include("entete.php");
 // Elles sont listées ci-dessous
 // Connaitre ses amis : 
 
-
+    $sql = 
 
 ?>
 

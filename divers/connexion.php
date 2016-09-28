@@ -2,16 +2,18 @@
 // Script connexion.php utilisé pour la connexion à la BD
 
 
-$host='localhost'; // le chemin vers le serveur (localhost dans 99% des cas)
+ini_set('display_errors', 1);ini_set('display_startup_errors', 1);error_reporting(E_ALL);
 
-$db='facedebouc'; // le nom de votre base de données.
-            // A l'IUT, 3 possibilité prenom_nom prenom_nom1 et prenom_nom2 
+// MAXIMILIEN - IUT
 
-$user='audemard'; // nom d'utilisateur pour se connecter
-              // A l'iut prenom.nom	
+$host="ipabdd"; // le chemin vers le serveur (localhost dans 99% des cas)
+$db="maximilienpluchard";
+$user="maximilien.pluch";
+$passwd="h7IopQ9V";
 
-$passwd='aud123'; // mot de passe de l'utilisateur pour se connecter
-            // A l'ut, généré automatiquement
+/*
+
+*/
 
 try {
 	// On essaie de créer une instance de PDO.

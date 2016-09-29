@@ -14,17 +14,18 @@ if(!isset($_SESSION['id'])) {
 	header("Location:login.php");
 }
 
-
 include("entete.php");
+include("menu.php");
 
 // Il faut faire des requêtes pour afficher ses amis, les attentes, les gens qu'on a invités qui ont pas répondu etc..
 // Elles sont listées ci-dessous
-
+    
+    
 // Connaitre les gens que l'on a invité et qui n'ont pas répondu : 
 // SELECT utilisateur.* FROM utilisateur INNER JOIN lien ON utilisateur.id=idUtilisateur2 AND etat='attente' AND idUtilisateur1=?
 // Paramètre 1 : le $_SESSION['id']
 
-echo 'les gens que tu as invités et qui n\'ont pas répondus : <br/>';
+echo '<h2>les gens que tu as invités et qui n\'ont pas répondus : </h2><br/>';
 
 $sql = "SELECT utilisateur.* FROM utilisateur INNER JOIN lien ON utilisateur.id=idUtilisateur2 AND etat='attente' AND idUtilisateur1=?";
 $query = $pdo -> prepare($sql);
@@ -32,13 +33,35 @@ $query->execute( array( $_SESSION['id'] ) );
 
 while ( $line = $query->fetch() ) {
 //    renderArray($line);
-    echo $line['login']."<br/>";
+    $link = 'mur.php?id='.$line['id'];    
+    echo lien($link, $line['login'])."<br/>";
     
 }
 
 // Connaitre les gens qui nous ont invité et pour lequel on a pas répondu 
 // SELECT utilisateur.* FROM utilisateur WHERE id IN(SELECT idUtilisateur1 FROM lien WHERE idUtilisateur2=? AND etat='attente'
 // Paramètre 1 : le $_SESSION['id']
+
+echo '<h2>les gens qui t\'ont invités mais que tu n\'as pas encore répondu : </h2>';
+
+$sql = "SELECT utilisateur.* FROM utilisateur WHERE id IN 
+        ( SELECT idUtilisateur1 FROM lien WHERE idUtilisateur2=? AND etat='attente' )";
+$query = $pdo->prepare($sql);
+$query->execute( array( $_SESSION['id'] ) );
+
+while ( $line = $query->fetch() ) {
+    
+    echo $line['login'].' ';
+    echo '<form action="../traitement/valideramitie.php" method="POST">';
+    
+    echo input('submit', 'reponse', array('value'=>'accepter'));
+    echo input('submit', 'reponse', array('value'=>'refuser'));
+    echo input('hidden', 'id', array('value'=>$line['id']));
+    
+    echo '</form>';
+    
+}
+
 
 
 
@@ -53,7 +76,7 @@ $query = $pdo->prepare($sql);
 $query->execute(array($_SESSION['id'], $_SESSION['id']));
 */
 
-echo "vos amis : (unfinished)<br/>";
+echo "<br/><h2>vos amis : (unfinished)<h2><br/>";
 /*
 
 while ( $line = $query->fetch() ) {

@@ -42,12 +42,15 @@ if($_GET['id']==$_SESSION['id']) {
     
     $line = $query->fetch();
     
-    if ( $line == false ) {
+    if ( $line['etat'] != "ami" ) {
         $ok = false;
+    } else {
+        echo 'Vous etes amis';
+        $ok = true;
     }
 
 }
-if($ok==false) {
+if($ok == false) {
 	echo "Vous n'êtes pas encore ami, vous ne pouvez voir son mur !!";
 	die(1);
 }

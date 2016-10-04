@@ -22,7 +22,17 @@ include("menu.php");
 
 // On veut affchier notre mur ou celui d'un de nos amis et pas faire n'importe quoi 
 
+<<<<<<< HEAD
+=======
+$sql = "SELECT * FROM utilisateur WHERE id=?";
+$query = $pdo->prepare($sql);
+$query -> execute(array($_GET['id']));
+$line = $query->fetch();
+
+echo "<h1>Mur de ".$line['login']."</h1>";
+>>>>>>> a09b2dc4a9163348d0f371d0cf2987f1bcfacb29
     
+
 $ok = false;
 if($_GET['id']==$_SESSION['id']) {
 	$ok = true; // C notre mur, pas de soucis
@@ -63,14 +73,18 @@ $query=$pdo->prepare($sql);
 $query->execute(array($_GET['id']));
 
 while ($line = $query->fetch()) {
+    
+    renderArray($line);
 
-    $sql = "SELECT * FROM utilisateur WHERE id=".$line["idAuteur"];
+    $sql = "SELECT * FROM utilisateur WHERE id=?";
     $query = $pdo->prepare($sql);
-    $query->execute();
-    $auteur = $query->fetch();
+    $query->execute(array($line["idAuteur"]));
     
-    afficherPost( $line, $auteur );
-    
+    while ( $auteur = $query->fetch()) {
+                
+        afficherPost( $line, $auteur );
+        
+    }    
 }
 
 function afficherPost( $data, $auteur) {

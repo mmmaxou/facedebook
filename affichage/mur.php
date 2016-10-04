@@ -70,13 +70,15 @@ $query=$pdo->prepare($sql);
 $query->execute(array($_GET['id']));
 
 while ($line = $query->fetch()) {
+    
+    renderArray($line);
 
-    $sql = "SELECT * FROM utilisateur WHERE id=".$line["idAuteur"];
+    $sql = "SELECT * FROM utilisateur WHERE id=?";
     $query = $pdo->prepare($sql);
-    $query->execute();
+    $query->execute(array($line["idAuteur"]));
     
     while ( $auteur = $query->fetch()) {
-        
+                
         afficherPost( $line, $auteur );
         
     }    

@@ -11,6 +11,9 @@ if(!isset($_SESSION['id'])) {
 
 
 // Ecrire un message
+if(isset($_POST['statut'])){
+    $sql = "INSERT INTO ecrit FROM ";
+}
 
 
 ?>

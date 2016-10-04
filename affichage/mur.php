@@ -91,6 +91,12 @@ function afficherPost( $data, $auteur) {
     
 }
 
+echo "<form action='../traitement/ecrire.php' method='post'>
+        <textarea name='statut' style='resize:none'></textarea>
+        <input type='button' value='Poster'>
+      </form>
+    ";
+
 
 ?>
 

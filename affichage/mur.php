@@ -100,9 +100,11 @@ function afficherPost( $data, $auteur) {
     
 }
 
-echo "<form action='../traitement/ecrire.php' method='post'>
-        <textarea name='statut' style='resize:none'></textarea>
-        <input type='button' value='Poster'>
+echo "<form action='../traitement/ecrire.php' method='POST'>
+        Entre ton titre enculé : <input type='text' name='titre' value='titre'>
+        <textarea name='statut' style='resize:none' ></textarea>
+        <input type='submit' value='Poster'>
+        <input type='hidden' name='id' value=".$_GET['id'].">
       </form>
     ";
 

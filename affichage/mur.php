@@ -125,12 +125,16 @@ function afficherPost( $data, $auteur) {
     
 }
 
-renderArray($_SESSION);
-echo "<form action='../traitement/ecrire.php' method='POST'>
+echo "<form action='../traitement/ecrire.php' method='POST' enctype='multipart/form-data'>
         Entre ton titre enculé : <input type='text' name='titre' value='titre'>
-        <textarea name='statut' style='resize:none' ></textarea>
+        <textarea name='statut' style='resize:none' ></textarea><br/>
         <input type='submit' value='Poster'>
         <input type='hidden' name='id' value=".$_GET['id'].">
+      </form>
+    ";
+echo "<form action='../traitement/uploader.php' method='POST' enctype='multipart/form-data'>
+        <input type='file' name='imageStatut'>
+        <input type='text' name='descriptionImageStatut'>
       </form>
     ";
 ?>

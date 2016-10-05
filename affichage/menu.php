@@ -15,7 +15,6 @@ $query->execute( array( $_SESSION['id'] ) );
 $line = $query->fetch();
 echo '<h1>Session de '.$line['login'].'</h1>';
 
-renderArray($_POST);
 
 
 //Requete de recherche des amis

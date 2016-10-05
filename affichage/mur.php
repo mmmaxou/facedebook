@@ -22,15 +22,13 @@ include("menu.php");
 
 // On veut affchier notre mur ou celui d'un de nos amis et pas faire n'importe quoi 
 
-<<<<<<< HEAD
-=======
 $sql = "SELECT * FROM utilisateur WHERE id=?";
 $query = $pdo->prepare($sql);
 $query -> execute(array($_GET['id']));
 $line = $query->fetch();
 
 echo "<h1>Mur de ".$line['login']."</h1>";
->>>>>>> a09b2dc4a9163348d0f371d0cf2987f1bcfacb29
+
     
 
 $ok = false;
@@ -100,10 +98,11 @@ function afficherPost( $data, $auteur) {
     } else {
         echo "il n'y a pas d'image";
     }
-    echo lien("../traitement/effacer.php?idAuteur=".$data['idAuteur']," Supprimer");
+    echo lien("../traitement/effacer.php?idAuteur=".$data['id']," Supprimer");
     echo "</fieldset>";
     
 }
+
 
 echo "<form action='../traitement/ecrire.php' method='POST'>
         Entre ton titre enculé : <input type='text' name='titre' value='titre'>

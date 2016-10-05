@@ -28,7 +28,6 @@ $query -> execute(array($_GET['id']));
 $line = $query->fetch();
 
 echo "<h1>Mur de ".$line['login']."</h1>";
-
     
 
 $ok = false;
@@ -70,23 +69,25 @@ $sql = "SELECT * FROM ecrit WHERE idAmi=?";
 $query=$pdo->prepare($sql);
 $query->execute(array($_GET['id']));
 
-while ($line = $query->fetch()) {
+while ($line = $query-> fetch() ) {
     
-    renderArray($line);
-
+//    renderArray($line);
+    
     $sql = "SELECT * FROM utilisateur WHERE id=?";
-    $query = $pdo->prepare($sql);
-    $query->execute(array($line["idAuteur"]));
+    $q = $pdo->prepare($sql);
+    $q->execute(array($line["idAuteur"]));
     
-    while ( $auteur = $query->fetch()) {
+    
+    while ( $auteur = $q->fetch()) {
                 
         afficherPost( $line, $auteur );
         
-    }    
+    } 
+    
 }
 
 function afficherPost( $data, $auteur) {
-    echo "<fieldset>";
+    echo "<div class='well'>";
     
     echo $data["titre"]."<br/>";
     echo $data["contenu"]."<br/>";
@@ -98,12 +99,16 @@ function afficherPost( $data, $auteur) {
     } else {
         echo "il n'y a pas d'image";
     }
-    echo lien("../traitement/effacer.php?idAuteur=".$data['id']," Supprimer");
-    echo "</fieldset>";
+    
+    echo lien("../traitement/effacer.php?id=".$data['id'].'&idAuteur='.$data['idAuteur'].'&idAmi='.$data['idAmi']," Supprimer");
+
+
+    echo "</div>";
+
     
 }
 
-
+renderArray($_SESSION);
 echo "<form action='../traitement/ecrire.php' method='POST'>
         Entre ton titre enculé : <input type='text' name='titre' value='titre'>
         <textarea name='statut' style='resize:none' ></textarea>
@@ -111,8 +116,6 @@ echo "<form action='../traitement/ecrire.php' method='POST'>
         <input type='hidden' name='id' value=".$_GET['id'].">
       </form>
     ";
-
-
 ?>
 
 <?php

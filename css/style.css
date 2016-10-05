@@ -1,11 +1,42 @@
-/* MENU */
 * {
     font-size: 16px;
+    font-family: Montserrat, sans-serif;
+}
+h1,h2,h3 {
+    text-align: center;
+    color: #2aa02a;
+}
+h3 {
+    font-size: 20px;
 }
 
+div.hr {
+background: #fff  no-repeat scroll center;
+width:100%;
+height:2px;
+}
+
+div.hr hr {
+display: none;
+}
+/* ##########################  */
+/* ########## MENU ##########  */
+/* ##########################  */
+
+.menu a {
+    margin: 0;
+    padding: 15px;
+    line-height: 52px;
+    font-family: Montserrat, sans-serif;
+}
 .menu{
-    padding: 50px 0;
+    height: 52px;
     background-color: #ffffa1;    
+}
+.menu .wrapper-menu{
+	float: left;
+    position: relative;
+    left: 50%;
 }
 .menu * {
     color: #151413;
@@ -15,18 +46,147 @@
     margin-right:15px;
     font-family: Century Gothic;
 }
-
-ul {
-    margin: 0px
+.menu ul {
+    float: left;
+    position: relative;
+    left: -50%;
 }
-
-li {
+.menu li{
     display: inline-block;
+    float: left;
+    
+    margin: 0 auto;
 }
+.menu .link:hover {
+    background-color: #e2e271;
+}
+.menu a:hover {
+    color: #2f2f2f;
+}
+
+/* SEARCH */
+
+.menu .searchbar {
+    margin: 0;
+    padding: 0;
+}
+
+#search {
+    width: 357px;
+    margin: 4px;
+}
+#search_text{
+    width: 297px;
+    padding: 15px 0 15px 20px;
+    font-size: 16px;
+    font-family: Montserrat, sans-serif;
+    border: 0 none;
+    height: 52px;
+    margin-right: 0;
+    color: black;
+    outline: none;
+    background: #f0f09d;
+    float: left;
+    box-sizing: border-box;
+    transition: all 0.15s;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color: #3b3b3b;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: rgba(255,255,255,0.6);
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: rgba(255,255,255,0.6);
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: rgba(255,255,255,0.6);
+}
+#search_text:focus {
+    background: #f0dd9d;
+}
+#search_button {
+    border: 0 none;
+    background: #f0f09d url("../images/search.png") center no-repeat;
+    width: 60px;
+    float: left;
+    padding: 0;
+    text-align: center;
+    height: 52px;
+    cursor: pointer;
+    color: transparent;
+}
+#deconnexion {
+    font-family: Montserrat, sans-serif;
+    border: 0 none;
+    background: #f0f09d;
+    float: left;
+    padding: 0 25px;
+    text-transform: capitalize;
+    text-align: center;
+    height: 52px;
+    cursor: pointer;
+}
+
+/* FIN SEARCH */
+
 .container{
     width:1000px;
     margin:auto;
 }
+
+/* #########################  */
+/* ########## MUR ##########  */
+/* #########################  */
+
+.message {
+    width: 80%;
+    min-width: 600px;
+    
+    outline-style: outset;
+    outline-color: #aaa;
+    outline-width: thin;
+
+    box-shadow: 0px 0px 5px 2px #ccc;
+    padding: 25px;
+    margin: 50px auto;
+}
+.message input, .message textarea{
+    width: 100%;
+    padding: 10px;
+    margin: 5px;
+}
+.message textarea {
+    resize: vertical;
+    height: 150px;
+}
+.message input[type='file'] {
+    outline-style: dotted;
+    outline-width: thick;
+    outline-color: darkgrey;
+    height: 50px;
+}
+.message .text-image {
+    margin-top: 25px;
+}
+
+/* ECRIT */
+
+.sous-texte, .sous-texte a{
+    font-size: 12px;
+    color: #555;
+    margin: 0;
+}
+.sous-texte a{
+	float: right;
+}
+.sous-texte a:hover{
+	color:black;
+    text-decoration: underline;    
+}
+
+
+/* CONNEXION */
 .wrapperConnexion{
     height:200px;
     margin-top:100px;

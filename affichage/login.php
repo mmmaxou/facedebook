@@ -6,6 +6,7 @@
 session_start();
 include("../divers/connexion.php");
 include("../divers/balises.php");
+include("entete.php");
 
 
 

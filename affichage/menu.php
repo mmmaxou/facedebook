@@ -6,17 +6,39 @@
 //recherche
 
 $mur = "mur.php?id=".$_SESSION['id'];
-echo lien($mur, "Mon mur"). "   ";
-echo lien("ami.php", "Mes amis");
 
 $sql = "SELECT * FROM utilisateur WHERE id=?";
 $query = $pdo->prepare($sql);
 $query->execute( array( $_SESSION['id'] ) );
 $line = $query->fetch();
-echo '<h1>Session de '.$line['login'].'</h1>';
 
-renderArray($_POST);
 
+echo "<div class='menu'><ul>";
+echo "<li>".lien("mur.php?id=".$_SESSION['id'],"Bonjour ".$line['login'])."</li>";
+echo item(lien("ami.php", "Mes amis"));
+
+?>
+
+
+    
+    <li>
+        <form method="post" action="#">
+            Rechercher un ami
+            <input type="text" name="search" placeholder="Son pseudo" required>
+            <input type="submit" value="valider">
+        </form>
+    </li>
+    <li>
+        <form method="get" action="../traitement/deconnexion.php">
+            <input type="submit" name="action" value="deconnexion"> 
+        </form>
+    </li>
+</ul>
+</div>
+<div class="container">
+
+
+<?php
 
 //Requete de recherche des amis
 if ( isset($_POST['search']) ) {
@@ -32,17 +54,5 @@ if ( isset($_POST['search']) ) {
         
     }
 }
-    
+
 ?>
-
-
-
-<form method="get" action="../traitement/deconnexion.php">
-    <input type="submit" name="action" value="deconnexion"> 
-</form>
-
-<form method="post" action="#">
-    Rechercher un ami
-    <input type="text" name="search" placeholder="Son pseudo" required>
-    <input type="submit" value="valider">
-</form>

@@ -20,6 +20,7 @@ if(!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 include("menu.php");
 
 // On veut affchier notre mur ou celui d'un de nos amis et pas faire n'importe quoi 
+echo '<div class="mur">';
 
 $sql = "SELECT * FROM utilisateur WHERE id=?";
 $query = $pdo->prepare($sql);
@@ -125,7 +126,6 @@ function afficherPost( $data, $auteur) {
     
 }
 
-renderArray($_SESSION);
 echo "<form action='../traitement/ecrire.php' method='POST'>
         Entre ton titre enculé : <input type='text' name='titre' value='titre'>
         <textarea name='statut' style='resize:none' ></textarea>
@@ -133,9 +133,8 @@ echo "<form action='../traitement/ecrire.php' method='POST'>
         <input type='hidden' name='id' value=".$_GET['id'].">
       </form>
     ";
-?>
 
-<?php
+echo '</div>';
 // On termine par le pied de page
 
 include("pied.php");

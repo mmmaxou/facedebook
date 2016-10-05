@@ -1,7 +1,3 @@
-<?php
-// Ici on crée le pied de page
-// Et on oublie pas de fermer le body
-?>
-
+        </div> <!-- On ferme le container -->
     </body>
 </html>

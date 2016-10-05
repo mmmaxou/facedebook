@@ -3,7 +3,7 @@
 //mur ok
 //ami ok
 //deco ok
-//recherche
+//recherche ok
 
 $mur = "mur.php?id=".$_SESSION['id'];
 

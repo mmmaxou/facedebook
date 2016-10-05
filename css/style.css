@@ -5,13 +5,15 @@
 
 .menu{
     padding: 50px 0;
-    background-color: #309130;    
+    background-color: #ffffa1;    
 }
 .menu * {
-    color: white;
+    color: #151413;
     font-weight: bold;
-    font-size: 30px;
-    margin-left: 15px;
+    font-size: 15px;
+    text-align:center;
+    margin-right:15px;
+    font-family: Century Gothic;
 }
 
 ul {
@@ -20,4 +22,20 @@ ul {
 
 li {
     display: inline-block;
+}
+.container{
+    width:1000px;
+    margin:auto;
+}
+.wrapperConnexion{
+    height:200px;
+    margin-top:100px;
+    text-align:center;
+}
+
+#formConnexion{
+    margin:auto;
+}
+#formInscription{
+    margin:auto;
 }

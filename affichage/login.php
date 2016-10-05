@@ -18,26 +18,69 @@ include("entete.php");
 
   
 ?>
+<div class="container">
+   
+   
+    <div class='wrapperConnexion'>
+        <form action='../traitement/connexion.php' method='POST' >
+           <table id="formConnexion">
+               <tr>
+                    <td>Votre login : </td>
+                    <td><input type='text' name='login' placeholder="Login"></td>
+               </tr>
+               <tr>
+                  <td>Votre mot de passe : </td>
+                   <td><input type='password' name='pwd' placeholder="Mot de passe"></td>
+               </tr>
+               <tr>
+                   <td>
+                       Se souvenir de moi : 
+                   </td>
+                   <td>
+                       <input type='checkbox' name='remember'>
+                   </td>
+               </tr>
+               <tr>
+                   <td colspan="2"><input type='submit' value='Connexion'></td>
+               </tr>
+           </table>
+            
+            
+            
+        </form>
+    </div>
 
-<form action='../traitement/connexion.php' method='POST'>
-    <input type='text' name='login'>
-    <input type='password' name='pwd'>
-    <input type='submit' value='Connexion'>
-    Se souvenir de moi : 
-    <input type='checkbox' name='remember'>
-</form>
-<br/>
-<br/>
 
-<form action='../traitement/creercompte.php' method='POST'>
-    Veuillez rentrer votre Login : 
-    <input type='text' name='login'><br/>
-    Tapez votre mdp
-    <input type='password' name='password'></br>
-    Encore fdp
-    <input type='password' name='passwordConfirm'></br>
-    <input type='submit' value='Connexion'>
-</form>
+    <div class='wrapperConnexion'>
+        <form action='../traitement/creercompte.php' method='POST' >
+           <table id="formInscription">
+               <tr>
+                   <td>Veuillez rentrer votre Login :</td>
+                   <td><input type='text' name='login'><br/></td>
+               </tr>
+               <tr>
+                   <td>
+                        Tapez votre mdp
+                   </td>
+                   <td>
+                      <input type='password' name='password'></br> 
+                   </td>
+               </tr>
+               <tr>
+                   <td>
+                      Encore fdp 
+                   </td>
+                   <td>
+                       <input type='password' name='passwordConfirm'></br>
+                   </td>
+               </tr>
+               <tr>
+                   <td colspan="2"><input type='submit' value='Connexion'></td>
+               </tr>
+           </table>
+     </form>
+   </div>
+</div>
 
 <?php
 

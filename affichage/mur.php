@@ -126,26 +126,25 @@ function afficherPost( $data, $auteur) {
     
 }
 
-<<<<<<< HEAD
-echo "<form action='../traitement/ecrire.php' method='POST' enctype='multipart/form-data'>
-=======
+
+echo "<form action='../traitement/ecrire.php' method='POST' enctype='multipart/form-data'>";
+
 echo "<form action='../traitement/ecrire.php' method='POST'>
->>>>>>> cbe3f1a63d1843ec7e3ce07c3d485354173f78ec
+
         Entre ton titre enculé : <input type='text' name='titre' value='titre'>
         <textarea name='statut' style='resize:none' ></textarea><br/>
         <input type='submit' value='Poster'>
         <input type='hidden' name='id' value=".$_GET['id'].">
       </form>
     ";
-<<<<<<< HEAD
+
 echo "<form action='../traitement/uploader.php' method='POST' enctype='multipart/form-data'>
         <input type='file' name='imageStatut'>
         <input type='text' name='descriptionImageStatut'>
       </form>
     ";
-?>
-=======
->>>>>>> cbe3f1a63d1843ec7e3ce07c3d485354173f78ec
+
+
 
 echo '</div>';
 // On termine par le pied de page

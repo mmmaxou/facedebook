@@ -100,7 +100,7 @@ function afficherPost( $data, $auteur) {
         echo "il n'y a pas d'image";
     }
     
-    echo lien("../traitement/effacer.php?id=".$data['id'].'&idAuteur='.$data['idAuteur'].'&idAmi='.$data['idAmi']," Supprimer");
+    echo lien("../traitement/effacer.php?id=".$data['id']," Supprimer");
 
 
     echo "</div>";

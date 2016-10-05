@@ -10,21 +10,25 @@ if(!isset($_SESSION['id'])) {
 
 // La requete de suppression d'un écrit (il faut le donner en get : DELETE FROM ecrit where id=?
 // Le paramètre est le $_GET['id']
+$sql = "SELECT idAmi, idAuteur FROM ecrit WHERE id=?";
+$query = $pdo->prepare($sql);
+$query -> execute(array($_GET['id']));
+
+$line = $query->fetch();
 
 
-if(isset($_GET['id']) && isset($_GET['idAuteur']) && isset($_GET['idAmi']) && is_numeric($_GET['id']) && is_numeric($_GET['idAuteur']) && is_numeric($_GET['idAmi']) ){
-    if($_GET['idAuteur'] == $_SESSION['id']){// on check si c'est l'utilisateur qui possède le mur
+if(isset($_GET['id'])  && is_numeric($_GET['id'])){
+    if($line['idAuteur'] == $_SESSION['id']){// on check si c'est l'utilisateur qui possède le mur
         $sql = "DELETE FROM ecrit WHERE id=?";
         $query = $pdo -> prepare($sql);
         $query->execute(array($_GET['id']));
         
     }
-    
     // On check si c'est un utilisateur qui a écrit sur le mur de quelqu'un
-    if($_GET['idAmi']== $_SESSION['id']){
-        $sql = "DELETE FROM ecrit WHERE idAmi=? AND id=?";
+    if($line['idAmi'] == $_SESSION['id']){
+        $sql = "DELETE FROM ecrit WHERE id=?";
         $query = $pdo -> prepare($sql);
-        $query->execute(array($_GET['idAmi'],$_GET['id']));
+        $query->execute(array($_GET['id']));
     }
     
 }

@@ -86,22 +86,17 @@ if($ok == false) {
 //Formulaire de post
 echo "<div class='message'>";
 
-echo "<form action='../traitement/ecrire.php' method='POST' enctype='multipart/form-data'>";
-echo "<form action='../traitement/ecrire.php' method='POST'>
+echo "<form action='../traitement/ecrire.php' method='POST' enctype='multipart/form-data'>
 
         <p>Poster un message : </p>
         <input type='text' name='titre' value='Titre'>
         <textarea name='statut' placeholder='Votre message ...' ></textarea><br/>
+         <input type='file' id='hiddenfile' name='imageStatut' style='display:none' onchange='getfile()'>
+        <input type='button' value='Ajouter une image' onclick='getfile()' />
+        <p id='demo'></p>
         <input type='submit' value='Poster'>
         <input type='hidden' name='id' value=".$_GET['id'].">
       </form>";
-echo "<form action='../traitement/uploader.php' method='POST' enctype='multipart/form-data'>
-        <input type='file' id='hiddenfile' name='imageStatut' style='display:none' onchange='getfile()'>
-        <input type='button' value='Ajouter une image' onclick='getfile()' />
-        
-        <p id='demo'></p>
-      </form>
-    ";
 echo "</div>";
 
 
@@ -132,8 +127,8 @@ while ($line = $query-> fetch() ) {
 function afficherPost( $data, $auteur) {
     echo "<div class='well'>";
 
-    echo "<h3>".$data["titre"]."</h3><br/>";
-    echo "<p class='texte'>".$data["contenu"]."</p>";
+    echo "<h3>".htmlspecialchars($data["titre"])."</h3><br/>";
+    echo "<p class='texte'>".htmlspecialchars($data["contenu"])."</p>";
     echo "<div class='hr'><hr /></div>";
     echo "<p class='sous-texte'>Ecrit le ";
     echo $data["dateEcrit"];

@@ -16,8 +16,56 @@ if(isset($_POST['statut'])){
     $query =$pdo->prepare($sql);
     $query -> execute(array($_POST['titre'],$_POST['statut'],date("Y-m-d h:i:s  "),$_SESSION['id'],$_POST['id']));
     
-    header("Location:../affichage/mur.php?id=".$_POST['id']);
+    $extensionsAutorisees = array("jpeg", "jpg", "png"); //extensions acceptées
+    $fichierImport = $_FILES['imageStatut']['name']; //simplification du nom du fichier d'upload
+
+    if(isset($fichierImport)){
+        if(!(in_array($_FILES['type'],$extensionsAutorisees))){
+            echo "C'est pas le bon type fdp";
+            header("Location:../affichage/mur.php?id=".$_SESSION['id']);
+        }
+        else{
+            $repertoireDeDepot = "../images";
+        }
+    }
 }
 
 
+
+// POST IMAGE 
+
+
+
+
+/*
+    
+$nomOrigine = $_FILES['pp']['name'];
+$elementsChemin = pathinfo($nomOrigine);
+$extensionFichier = $elementsChemin['extension'];
+
+
+
+if (!(in_array($extensionFichier, $extensionsAutorisees))) {
+    echo "Le fichier n'a pas l'extension attendue";
+} 
+
+else{    
+
+    $repertoireDestination = dirname(__FILE__)."/photoprofil/";
+    $nomDestination = "photo".$_SESSION['id'].".".$extensionFichier;
+
+	if (move_uploaded_file($_FILES["pp"]["tmp_name"], $repertoireDestination.$nomDestination)) {
+		$sqlinsert = "UPDATE utilisateur SET photo=? WHERE id=?";
+		$queryinsert = $pdo->prepare($sqlinsert);
+		$queryinsert ->execute(array($_SESSION['id'],$_SESSION['id']));
+
+    	$_SESSION['photo'] = $_SESSION['id'];	
+    	header("location:../affichage/mur.php?id=".$_SESSION['id']."");
+	}
+
+	else{
+	    echo "Le fichier n'a pas été uploadé (trop gros ?)";
+	}
+}
+*/
 ?>

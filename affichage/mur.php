@@ -129,27 +129,26 @@ function afficherPost( $data, $auteur) {
 
     echo "<h3>".htmlspecialchars($data["titre"])."</h3><br/>";
     echo "<p class='texte'>".htmlspecialchars($data["contenu"])."</p>";
+    
+    if (isset($data['image'])) {
+        echo "<img src='../uploads/".$data['image']."' ><br/>";
+    } else {
+        echo "il n'y a pas d'image";
+    }
+    
     echo "<div class='hr'><hr /></div>";
     
      $time_added =$data['dateEcrit']; 
      // $notifies['date_time'] some sql datebase time
     echo $converted_time = AgoTimeFormat::makeAgo(strtotime($time_added)); 
-    echo "<p class='sous-texte'>Ecrit par <a href='#id=?".$auteur['id']."'>".$auteur['login']."</a>";;
+    echo "<p class='sous-texte'>Ecrit par <a href='mur.php?id=".$auteur['id']."'>".$auteur['login']."</a>";;
    
 
 
-    echo lien("../traitement/effacer.php?id=".$data['id'],"X | Supprimer",array("class"=>"gestion"));
+    echo lien("../traitement/editer.php?id=".$data['id'],"E | Editer",array('class'=>'gestion'));
+    echo lien("../traitement/effacer.php?id=".$data['id'],"X | Supprimer",array('class'=>'gestion'));
 
     echo "</p>";
-
-    if (isset($data['image'])) {
-        echo "il y a une image";
-    } else {
-        echo "il n'y a pas d'image";
-    }
-
-
-
     echo "</div>";
 
 

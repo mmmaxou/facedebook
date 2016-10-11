@@ -94,16 +94,16 @@ display: none;
     transition: all 0.15s;
 }
 ::-webkit-input-placeholder { /* WebKit browsers */
-    color: #3b3b3b;
+    color: rgba(0,0,0,0.6);
 }
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color: rgba(255,255,255,0.6);
+    color: rgba(0,0,0,0.6);
 }
 ::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color: rgba(255,255,255,0.6);
+    color: rgba(0,0,0,0.6);
 }
 :-ms-input-placeholder { /* Internet Explorer 10+ */
-    color: rgba(255,255,255,0.6);
+    color: rgba(0,0,0,0.6);
 }
 #search_text:focus {
     background: #f0dd9d;

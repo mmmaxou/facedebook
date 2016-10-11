@@ -10,24 +10,28 @@ if(!isset($_SESSION['id'])) {
 }
 
 
+renderArray($_POST);
+renderArray($_FILES);
+
 // Ecrire un message
 if(isset($_POST['statut'])){
     $sql = "INSERT INTO ecrit VALUES(NULL,?,?,?,NULL,?,?)";
     $query =$pdo->prepare($sql);
     $query -> execute(array($_POST['titre'],$_POST['statut'],date("Y-m-d h:i:s  "),$_SESSION['id'],$_POST['id']));
     
-    $extensionsAutorisees = array("jpeg", "jpg", "png"); //extensions acceptées
+    $extensionsAutorisees = array("image/jpeg", "image/png"); //extensions acceptées
     $fichierImport = $_FILES['imageStatut']['name']; //simplification du nom du fichier d'upload
 
     if(isset($fichierImport)){
-        if(!(in_array($_FILES['type'],$extensionsAutorisees))){
-            echo "C'est pas le bon type fdp";
-            header("Location:../affichage/mur.php?id=".$_SESSION['id']);
+        if(!(in_array($_FILES['imageStatut']['type'],$extensionsAutorisees))){
+            echo "C'est pas le bon type";
+//            header("Location:../affichage/mur.php?id=".$_SESSION['id']);
         }
         else{
             $repertoireDeDepot = "../images";
         }
     }
+    echo $repertoireDeDepot;
 }
 
 

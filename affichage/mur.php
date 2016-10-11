@@ -134,10 +134,11 @@ function afficherPost( $data, $auteur) {
      $time_added =$data['dateEcrit']; 
      // $notifies['date_time'] some sql datebase time
     echo $converted_time = AgoTimeFormat::makeAgo(strtotime($time_added)); 
-    echo "<p class='sous-texte'>Ecrit par <a href='#id=?'>zaedazd</a>";
-    echo "<a href=''>Heyo</a>";
+    echo "<p class='sous-texte'>Ecrit par <a href='#id=?".$auteur['id']."'>".$auteur['login']."</a>";;
+   
 
-    echo lien("../traitement/effacer.php?id=".$data['id'],"X | Supprimer");
+
+    echo lien("../traitement/effacer.php?id=".$data['id'],"X | Supprimer",array("class"=>"gestion"));
 
     echo "</p>";
 

@@ -128,23 +128,22 @@ function afficherPost( $data, $auteur) {
 
     echo "<h3>".htmlspecialchars($data["titre"])."</h3><br/>";
     echo "<p class='texte'>".htmlspecialchars($data["contenu"])."</p>";
+    
+    if (isset($data['image'])) {
+        echo "<img src='../uploads/".$data['image']."' ><br/>";
+    } else {
+        echo "il n'y a pas d'image";
+    }
+    
     echo "<div class='hr'><hr /></div>";
     echo "<p class='sous-texte'>Ecrit le ";
     echo $data["dateEcrit"];
     echo " par ".$auteur["login"];
 
-    echo lien("../traitement/effacer.php?id=".$data['id'],"X | Supprimer");
+    echo lien("../traitement/editer.php?id=".$data['id'],"E | Editer",array('class'=>'gestion'));
+    echo lien("../traitement/effacer.php?id=".$data['id'],"X | Supprimer",array('class'=>'gestion'));
 
     echo "</p>";
-
-    if (isset($data['image'])) {
-        echo "il y a une image";
-    } else {
-        echo "il n'y a pas d'image";
-    }
-
-
-
     echo "</div>";
 
 

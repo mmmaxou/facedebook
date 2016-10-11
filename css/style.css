@@ -25,6 +25,10 @@ display: none;
 /* ##########################  */
 /* ########## MENU ##########  */
 /* ##########################  */
+.menu {
+    position: fixed;
+    width: 100%;
+}
 
 .menu a {
     margin: 0;
@@ -180,8 +184,9 @@ display: none;
     color: #555;
     margin: 0;
 }
-.sous-texte a{
+.sous-texte a.gestion{
 	float: right;
+    margin-left: 15px;
 }
 .sous-texte a:hover{
 	color:black;

@@ -87,11 +87,10 @@ if($ok == false) {
 echo "<div class='message'>";
 
 echo "<form action='../traitement/ecrire.php' method='POST' enctype='multipart/form-data'>
-
         <p>Poster un message : </p>
         <input type='text' name='titre' value='Titre'>
         <textarea name='statut' placeholder='Votre message ...' ></textarea><br/>
-         <input type='file' id='hiddenfile' name='imageStatut' style='display:none' onchange='getfile()'>
+        <input type='file' id='hiddenfile' name='imageStatut' style='display:none' onchange='getfile()'>
         <input type='button' value='Ajouter une image' onclick='getfile()' />
         <p id='demo'></p>
         <input type='submit' value='Poster'>

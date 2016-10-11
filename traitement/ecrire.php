@@ -38,6 +38,10 @@ if(isset($_POST['statut'])){
 
 
 /*
+    <?php $time_added = \Helpers\AgoTimeFormat::convert_datetime( $notifies['date_time']); ?> // $notifies['date_time'] some sql datebase time <?php echo $converted_time = \Helpers\AgoTimeFormat::makeAgo($time_added); ?>
+    
+    https://github.com/geomorillo/Upload
+    
     
 $nomOrigine = $_FILES['pp']['name'];
 $elementsChemin = pathinfo($nomOrigine);

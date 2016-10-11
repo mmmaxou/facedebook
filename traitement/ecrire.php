@@ -25,13 +25,13 @@ if(isset($_POST['statut'])){
     if(isset($fichierImport)){
         if(!(in_array($_FILES['imageStatut']['type'],$extensionsAutorisees))){
             echo "C'est pas le bon type";
-//            header("Location:../affichage/mur.php?id=".$_SESSION['id']);
+            header("Location:../affichage/mur.php?id=".$_SESSION['id']);
         }
         else{
             $repertoireDeDepot = "../images";
         }
     }
-    echo $repertoireDeDepot;
+    //echo $repertoireDeDepot;
 }
 
 

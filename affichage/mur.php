@@ -2,6 +2,7 @@
 session_start();
 include("../divers/connexion.php");
 include("../divers/balises.php");
+include("../divers/agoTimeFormat.php");
 
 if(!isset($_SESSION['id'])) {
     // On n'est pas connecté, il faut retourner à la pgae de login
@@ -129,9 +130,12 @@ function afficherPost( $data, $auteur) {
     echo "<h3>".htmlspecialchars($data["titre"])."</h3><br/>";
     echo "<p class='texte'>".htmlspecialchars($data["contenu"])."</p>";
     echo "<div class='hr'><hr /></div>";
-    echo "<p class='sous-texte'>Ecrit le ";
-    echo $data["dateEcrit"];
-    echo " par ".$auteur["login"];
+    
+     $time_added =$data['dateEcrit']; 
+     // $notifies['date_time'] some sql datebase time
+    echo $converted_time = AgoTimeFormat::makeAgo(strtotime($time_added)); 
+    echo "<p class='sous-texte'>Ecrit par <a href='#id=?'>zaedazd</a>";
+    echo "<a href=''>Heyo</a>";
 
     echo lien("../traitement/effacer.php?id=".$data['id'],"X | Supprimer");
 

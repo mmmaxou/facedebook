@@ -3,6 +3,8 @@ session_start();
 
 include("../divers/connexion.php");
 include("../divers/balises.php");
+include("../divers/Security.php");
+include("../divers/Upload.php");
 
 if(!isset($_SESSION['id'])) {
 	// On n'est pas connecté, il faut retourner à la pgae de login
@@ -13,12 +15,31 @@ if(!isset($_SESSION['id'])) {
 renderArray($_POST);
 renderArray($_FILES);
 
+function up() {
+    
+    $config['upload_path'] = '../uploads';
+    $config['allowed_types'] = '*';
+    $upload = new Upload($config);
+
+    if ($upload->do_upload('imageStatut')) {
+        return $upload->file_name;
+    }else {
+            return false;
+    }
+    
+}
+
+
 // Ecrire un message
 if(isset($_POST['statut'])){
-    $sql = "INSERT INTO ecrit VALUES(NULL,?,?,?,NULL,?,?)";
+    $f = up();
+    $file = $f ? $f : null;
+        $sql = "INSERT INTO ecrit VALUES(NULL,?,?,?,?,?,?)";
     $query =$pdo->prepare($sql);
-    $query -> execute(array($_POST['titre'],$_POST['statut'],date("Y-m-d h:i:s  "),$_SESSION['id'],$_POST['id']));
+    $query -> execute(array($_POST['titre'],$_POST['statut'],date("Y-m-d h:i:s  "),$file,$_SESSION['id'],$_POST['id']));
     
+    
+    /*
     $extensionsAutorisees = array("image/jpeg", "image/png"); //extensions acceptées
     $fichierImport = $_FILES['imageStatut']['name']; //simplification du nom du fichier d'upload
 
@@ -31,7 +52,15 @@ if(isset($_POST['statut'])){
             $repertoireDeDepot = "../images";
         }
     }
+<<<<<<< HEAD
     //echo $repertoireDeDepot;
+=======
+    echo $repertoireDeDepot;
+    */
+    
+    
+    
+>>>>>>> a8cd8e6fd448326a7490118eceb64a00dd2d9d39
 }
 
 

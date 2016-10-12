@@ -51,13 +51,15 @@ if($_GET['id']==$_SESSION['id']) {
     if ( $line['etat'] != "ami" ) {
         $ok = false;
     } else {
-        echo 'Vous etes amis';
+        echo 'Vous etes amis ';
+        $amiASupprimer = $_GET['id'];
+        echo "<a href='../traitement/supprimerAmi.php?id=$amiASupprimer' >Supprimer</a>";
         $ok = true;
     }
 
 }
 if($ok == false) {
-    echo "Vous n'êtes pas encore ami, vous ne pouvez voir son mur !!<br/>";
+    echo "Vous n'êtes pas  ami, vous ne pouvez voir son mur ! <br/>";
 
     $sql = "SELECT * FROM lien WHERE (idUtilisateur1=? AND idUtilisateur2=?) OR (idUtilisateur1=? AND idUtilisateur2=?)";
     $query = $pdo->prepare($sql);
@@ -70,7 +72,7 @@ if($ok == false) {
     if ($etat == "attente") {
         echo "Invitation deja envoyée";
     } else if ($etat == "banni") {
-        echo "L'utilisateur vous a banni";
+        echo "Vous ne pouvez plus vous contacter.";
     } else {
         echo "<a href='../traitement/demanderamitie.php?id=".$_GET['id']."'><input type='button' value='Demander en Ami'></a>";
     }	
@@ -104,7 +106,7 @@ echo "</div>";
 //Affichage des post
 echo "<div class='ecrit'>";
 
-$sql = "SELECT * FROM ecrit WHERE idAmi=?";
+$sql = "SELECT * FROM ecrit WHERE idAmi=? ORDER BY dateEcrit DESC";
 $query=$pdo->prepare($sql);
 $query->execute(array($_GET['id']));
 
@@ -140,8 +142,9 @@ function afficherPost( $data, $auteur) {
      $time_added =$data['dateEcrit']; 
      // $notifies['date_time'] some sql datebase time
     echo $converted_time = AgoTimeFormat::makeAgo(strtotime($time_added)); 
-    echo "<p class='sous-texte'>Ecrit par <a href='#id=?'>zaedazd</a>";
-    echo "<a href=''>Heyo</a>";
+    echo "<p class='sous-texte'>Ecrit par <a href='mur.php?id=".$auteur['id']."'>".$auteur['login']."</a>";;
+   
+
 
 //    echo lien("../traitement/editer.php?id=".$data['id'],"E | Editer",array('class'=>'gestion', 'data-toggle'=>'modal', 'data-target'=>'#texte-modal'));
     echo lien("","E | Editer",array('class'=>'gestion', 'data-toggle'=>'modal','id'=>$data['id'],'onClick'=>'editer(this)'));

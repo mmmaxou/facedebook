@@ -187,7 +187,7 @@ display: none;
 }
 .sous-texte a.gestion{
 	float: right;
-    margin-left: 15px;
+    margin-left:15px;
 }
 .sous-texte a:hover{
 	color:black;
@@ -206,9 +206,6 @@ display: none;
 #texte-modal .modal-body {
     padding: 20px;
 }
-
-
-
 
 /* CONNEXION */
 .wrapperConnexion{

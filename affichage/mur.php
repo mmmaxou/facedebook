@@ -24,12 +24,20 @@ include("menu.php");
 // On veut affchier notre mur ou celui d'un de nos amis et pas faire n'importe quoi 
 echo '<div class="mur">';
 
+echo '<div id="profil">';
+echo '<div id="moi">';
+
 $sql = "SELECT * FROM utilisateur WHERE id=?";
 $query = $pdo->prepare($sql);
 $query -> execute(array($_GET['id']));
 $line = $query->fetch();
 
-echo "<h1>Mur de ".$line['login']."</h1>";
+echo "<h1 class='rancho'>".$line['login']."</h1>";
+echo "<p>Hédoniste authentique, visionnaire du passé, artiste en mousse et nerd à temps partiel. Allergique aux filtres chiens et papillons. J'ai un appart de 65m2 pour faire des concours de zoulettes.</p>";
+
+echo '</div>';
+echo '</div>';
+echo '<div id="main">';
 
 $ok = false;
 $etat = null;
@@ -53,7 +61,7 @@ if($_GET['id']==$_SESSION['id']) {
     } else {
         echo 'Vous etes amis ';
         $amiASupprimer = $_GET['id'];
-        echo "<a href='../traitement/supprimerAmi.php?id=$amiASupprimer' >Supprimer</a>";
+        echo "<a href='../traitement/supprimerAmi.php?id=$amiASupprimer' id='supprimer-ami'> X | Supprimer</a>";
         $ok = true;
     }
 
@@ -136,10 +144,7 @@ function afficherPost( $data, $auteur) {
     if (isset($data['image'])) {
         echo "<img src='../uploads/".$data['image']."' ><br/>";
     }
-    
-    echo "<div class='hr'><hr /></div>";
-    
-     $time_added =$data['dateEcrit']; 
+    $time_added =$data['dateEcrit']; 
      // $notifies['date_time'] some sql datebase time
     echo $converted_time = AgoTimeFormat::makeAgo(strtotime($time_added)); 
     echo "<p class='sous-texte'>Ecrit par <a href='mur.php?id=".$auteur['id']."'>".$auteur['login']."</a>";;
@@ -185,8 +190,11 @@ function afficherPost( $data, $auteur) {
 
 echo '</div>';
 echo '</div>';
-// On termine par le pied de page
+echo '<div id="spacer"></div>';
 
+
+
+// On termine par le pied de page
 include("pied.php");
 
 

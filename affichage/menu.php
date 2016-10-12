@@ -37,7 +37,7 @@ echo item(lien("ami.php", "Mes amis"), array('class'=>'link'));
 </ul>
 </div>
 </div>
-<div class="container">
+<div class="container-fluid">
 
 
     <?php
@@ -52,7 +52,7 @@ echo item(lien("ami.php", "Mes amis"), array('class'=>'link'));
 
         while ( $line = $query->fetch() ) {
 
-            echo lien("mur.php?id=".$line['id'], $line['login']);
+            echo lien("mur.php?id=".$line['id'], $line['login']).'<br>';
 
         }
     }

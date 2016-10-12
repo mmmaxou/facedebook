@@ -38,4 +38,5 @@ if(isset($_POST['statut'])){
     $query -> execute(array($_POST['titre'],$_POST['statut'],date("Y-m-d h:i:s  "),$file,$_SESSION['id'],$_POST['id']));
     
 }
+header("Location:".$_SERVER['HTTP_REFERER']);
 ?>

@@ -32,7 +32,7 @@ if ( $ok ) {
     
     $sql = "SELECT * FROM ecrit WHERE id=?";
     $query = $pdo -> prepare($sql);
-    $query->excute(array($_GET['id']));
+    $query->execute(array($_GET['id']));
     
     $line = $query -> fetch();
     

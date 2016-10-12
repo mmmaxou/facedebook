@@ -34,3 +34,17 @@ function getfile(){
     }
     document.getElementById("demo").innerHTML = txt;
 }
+
+function editer(obj) {
+    console.log(obj);
+    var id = obj.id;
+    var titre = $('#well'+id+' h3').text();
+    var texte = $('#well'+id+' .texte').text();
+    
+    console.log(titre + ',' + texte + ',' + id);
+    $("#texte-modal input[type=text]").attr("value",titre);
+    $("#texte-modal input[type=hidden]").attr("value",id);
+    $("#texte-modal textarea").text(texte);   
+    
+    $("#texte-modal").modal();
+}

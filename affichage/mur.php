@@ -3,6 +3,7 @@ session_start();
 include("../divers/connexion.php");
 include("../divers/balises.php");
 include("../divers/agoTimeFormat.php");
+date_default_timezone_set("Europe/Paris");
 
 if(!isset($_SESSION['id'])) {
     // On n'est pas connecté, il faut retourner à la pgae de login
@@ -125,15 +126,13 @@ while ($line = $query-> fetch() ) {
 }
 
 function afficherPost( $data, $auteur) {
-    echo "<div class='well'>";
+    echo "<div class='well' id='well".$data['id']."'>";
 
     echo "<h3>".htmlspecialchars($data["titre"])."</h3><br/>";
     echo "<p class='texte'>".htmlspecialchars($data["contenu"])."</p>";
     
     if (isset($data['image'])) {
         echo "<img src='../uploads/".$data['image']."' ><br/>";
-    } else {
-        echo "il n'y a pas d'image";
     }
     
     echo "<div class='hr'><hr /></div>";
@@ -144,12 +143,40 @@ function afficherPost( $data, $auteur) {
     echo "<p class='sous-texte'>Ecrit par <a href='#id=?'>zaedazd</a>";
     echo "<a href=''>Heyo</a>";
 
-    echo lien("../traitement/editer.php?id=".$data['id'],"E | Editer",array('class'=>'gestion'));
+//    echo lien("../traitement/editer.php?id=".$data['id'],"E | Editer",array('class'=>'gestion', 'data-toggle'=>'modal', 'data-target'=>'#texte-modal'));
+    echo lien("","E | Editer",array('class'=>'gestion', 'data-toggle'=>'modal','id'=>$data['id'],'onClick'=>'editer(this)'));
     echo lien("../traitement/effacer.php?id=".$data['id'],"X | Supprimer",array('class'=>'gestion'));
 
     echo "</p>";
     echo "</div>";
+    
+    echo '
+<div id="texte-modal" class="modal fade" role="dialog">
+<div class="modal-dialog">
 
+<!-- Modal content-->
+<div class="modal-content">
+     <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Editer un post</h4>
+      </div>
+      <form action="../traitement/editer.php" method="post">
+      <div class="modal-body">
+        <input type="text" name="titre">
+        <textarea name="statut" style="resize: vertical;"></textarea><br/>
+        <label>Supprimer l\'image </label>
+        <input type="checkbox" name="del" value="del">
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-default" value="edit">Modifier</button>
+        <input type="hidden" name="id-well">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+      </form>
+</div>
+
+</div>
+</div>';
 
 }
 

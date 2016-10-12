@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/facebook-styles.css">
     <link rel="stylesheet" href="../css/style.css">
     
+    <script src="../js/jquery-2.2.4.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/scripts.js"></script>
 </head>

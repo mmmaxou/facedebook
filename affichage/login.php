@@ -25,6 +25,9 @@ include("entete.php");
         <form action='../traitement/connexion.php' method='POST' >
            <table id="formConnexion">
                <tr>
+                   <td colspan="2"><h3>Se connecter</h3></td>
+               </tr>
+               <tr>
                     <td>Votre login : </td>
                     <td><input type='text' name='login' placeholder="Login"></td>
                </tr>
@@ -55,12 +58,15 @@ include("entete.php");
         <form action='../traitement/creercompte.php' method='POST' >
            <table id="formInscription">
                <tr>
-                   <td>Veuillez rentrer votre Login :</td>
+                   <td colspan="2"><h3>S'inscrire</h3></td>
+               </tr>
+               <tr>
+                   <td>Login :</td>
                    <td><input type='text' name='login'><br/></td>
                </tr>
                <tr>
                    <td>
-                        Tapez votre mdp
+                        Mot de Passe :
                    </td>
                    <td>
                       <input type='password' name='password'></br> 
@@ -68,14 +74,14 @@ include("entete.php");
                </tr>
                <tr>
                    <td>
-                      Encore fdp 
+                      Verification : 
                    </td>
                    <td>
                        <input type='password' name='passwordConfirm'></br>
                    </td>
                </tr>
                <tr>
-                   <td colspan="2"><input type='submit' value='Connexion'></td>
+                   <td colspan="2"><input type='submit' value='Inscription'></td>
                </tr>
            </table>
      </form>

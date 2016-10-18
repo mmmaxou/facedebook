@@ -24,9 +24,13 @@ include("menu.php");
 // Connaitre les gens que l'on a invité et qui n'ont pas répondu : 
 // SELECT utilisateur.* FROM utilisateur INNER JOIN lien ON utilisateur.id=idUtilisateur2 AND etat='attente' AND idUtilisateur1=?
 // Paramètre 1 : le $_SESSION['id']
+echo '<div class="ami">';
+echo '<div id="profil">';
+echo '</div>';
+echo '<div id="main">';
+
 
 echo '<h2>Demandes d\'ami(s) en attente : </h2><br/>';
-
 $sql = "SELECT utilisateur.* FROM utilisateur INNER JOIN lien ON utilisateur.id=idUtilisateur2 AND etat='attente' AND idUtilisateur1=?";
 $query = $pdo -> prepare($sql);
 $query->execute( array( $_SESSION['id'] ) );
@@ -34,10 +38,9 @@ $query->execute( array( $_SESSION['id'] ) );
 while ( $line = $query->fetch() ) {
 //    renderArray($line);
     $link = 'mur.php?id='.$line['id'];    
-    echo lien($link, $line['login'])."<br/>";
+    echo lien($link, renderArray($line['login']))."<br/>";
     
 }
-
 // Connaitre les gens qui nous ont invité et pour lequel on a pas répondu 
 // SELECT utilisateur.* FROM utilisateur WHERE id IN(SELECT idUtilisateur1 FROM lien WHERE idUtilisateur2=? AND etat='attente'
 // Paramètre 1 : le $_SESSION['id']
@@ -51,7 +54,10 @@ $query->execute( array( $_SESSION['id'] ) );
 
 while ( $line = $query->fetch() ) {
     
-    echo $line['login'].' ';
+   
+    
+    renderArray($line ['login']);
+        echo ' ';
     echo '<form action="../traitement/valideramitie.php" method="POST">';
     
     echo input('submit', 'reponse', array('value'=>'accepter'));
@@ -69,7 +75,7 @@ while ( $line = $query->fetch() ) {
 // SELECT utilisateur.* FROM utilisateur INNER JOIN lien ON idUtilisateur1=utilisateur.id AND etat='ami' AND idUTilisateur2=? UNION SELECT utilisateur.* FROM utilisateur INNER JOIN lien ON idUtilisateur2=utilisateur.id AND etat='ami' AND idUTilisateur1=?
 // Les deux paramètres sont le $_SESSION['id']
     
-echo "<br/><h2>Votre liste d'ami(s)<h2><br/>";
+echo "<br/><h2>Votre liste d'ami(s)</h2><br/>";
 
 $sql = "SELECT utilisateur.* FROM utilisateur INNER JOIN lien ON idUtilisateur1=utilisateur.id AND etat='ami' AND idUTilisateur2=? UNION SELECT utilisateur.* FROM utilisateur INNER JOIN lien ON idUtilisateur2=utilisateur.id AND etat='ami' AND idUTilisateur1=?";
 $query = $pdo->prepare($sql);
@@ -83,8 +89,9 @@ while ( $line = $query->fetch() ) {
     echo "</a>";
 }
 
-
-
+echo '</div>';
+echo '<div id="spacer"></div>';
+echo '</div>';
 ?>
 
 

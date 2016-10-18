@@ -157,7 +157,7 @@ display: none;
     padding-top:52px;
 }
 
-.mur {
+.mur, .ami {
     display: flex;
 }
 #spacer, #profil {
@@ -280,4 +280,22 @@ display: none;
 }
 #formInscription{
     margin:auto;
+}
+
+
+/* ####################### */
+/* ####### AMI ####### */
+/* ####################### */
+
+.well-ami {
+    background-color: rgba(255,255,255,0.8);
+}
+.well-ami .texte {
+    background-color: rgba(255,255,255,1);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+pre {
+    text-align: center;
 }

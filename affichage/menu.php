@@ -39,11 +39,13 @@ echo item(lien("ami.php", "Mes amis"), array('class'=>'link'));
 </div>
 <div class="container-fluid">
 
-
     <?php
 
     //Requete de recherche des amis
     if ( isset($_POST['search']) ) {
+        
+        echo '<div class="recherche-ami">';
+        echo '<p>Recherche d\'amis</p>';
 
         $search = $_POST['search'];
         $sql = "SELECT * FROM utilisateur WHERE login LIKE '%".$search."%'";
@@ -58,3 +60,4 @@ echo item(lien("ami.php", "Mes amis"), array('class'=>'link'));
     }
 
     ?>
+    </div>

@@ -25,17 +25,6 @@ include("menu.php");
 echo '<div class="mur">';
 
 echo '<div id="profil">';
-echo '<div id="moi">';
-
-$sql = "SELECT * FROM utilisateur WHERE id=?";
-$query = $pdo->prepare($sql);
-$query -> execute(array($_GET['id']));
-$line = $query->fetch();
-
-echo "<h1 class='rancho'>".$line['login']."</h1>";
-echo "<p>Hédoniste authentique, visionnaire du passé, artiste en mousse et nerd à temps partiel. Allergique aux filtres chiens et papillons. J'ai un appart de 65m2 pour faire des concours de zoulettes.</p>";
-
-echo '</div>';
 echo '</div>';
 echo '<div id="main">';
 

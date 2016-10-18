@@ -48,3 +48,8 @@ function editer(obj) {
     
     $("#texte-modal").modal();
 }
+
+$('.message').hover(function() {
+    $('.message').addClass('selected');
+        console.log("hijhazjd")
+});

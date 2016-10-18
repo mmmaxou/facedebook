@@ -56,6 +56,7 @@ if($_GET['id']==$_SESSION['id']) {
 
 }
 if($ok == false) {
+    echo "<p class='white-color'>";
     echo "Vous n'êtes pas  ami, vous ne pouvez voir son mur ! <br/>";
 
     $sql = "SELECT * FROM lien WHERE (idUtilisateur1=? AND idUtilisateur2=?) OR (idUtilisateur1=? AND idUtilisateur2=?)";
@@ -69,10 +70,14 @@ if($ok == false) {
     if ($etat == "attente") {
         echo "Invitation deja envoyée";
     } else if ($etat == "banni") {
-        echo "Vous ne pouvez plus vous contacter.";
+        echo "Cette personne vous à banni; Vous ne pouvez plus vous contacter.";
     } else {
         echo "<a href='../traitement/demanderamitie.php?id=".$_GET['id']."'><input type='button' value='Demander en Ami'></a>";
-    }	
+    }
+
+    echo '</p>';
+    echo '</div>';
+    echo '<div id="spacer"></div>';
 
     die(1);
 }

@@ -26,6 +26,11 @@ div.hr hr {
 display: none;
 }
 
+.white-color {
+    color:white;
+    text-align: center;
+}
+
 /* ##########################  */
 /* ########## MENU ##########  */
 /* ##########################  */

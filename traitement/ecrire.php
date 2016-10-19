@@ -49,5 +49,5 @@ if(isset($_POST['statut']) || isset($_FILES['imageStatut'])){
     $query -> execute(array($_POST['titre'],$_POST['statut'],date("Y-m-d h:i:s  "),$file,$_SESSION['id'],$_POST['id']));
 }
 
-//header('Location:'.$_SERVER['HTTP_REFERER']);
+header('Location:'.$_SERVER['HTTP_REFERER']);
 ?>

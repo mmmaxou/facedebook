@@ -8,6 +8,7 @@ h1,h2,h3 {
 }
 h3 {
     font-size: 2em;
+    
 }
 
 body{
@@ -238,10 +239,25 @@ display: none;
 .well {
     background-color: rgba(255,255,255,0.8);
 }
+.well .content {
+    
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
 .well .texte {
     background-color: rgba(255,255,255,1);
-    border-radius: 5px;
     padding: 10px;
+    margin: 2px;
+    flex-grow: 1;
+    flex-basis: 1;
+    order: 2;
+}
+.well img {
+    border: 2px solid purple;
+    flex-basis: 1;
+    order: 1;
+    margin-right: 15px;
 }
 
 .sous-texte, .sous-texte a{

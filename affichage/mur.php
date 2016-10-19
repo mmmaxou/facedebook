@@ -143,11 +143,14 @@ function afficherPost( $data, $auteur) {
     echo "<div class='well' id='well".$data['id']."'>";
 
     echo "<h3>".htmlspecialchars($data["titre"])."</h3><br/>";
+    echo "<div class='content'>";
     echo "<p class='texte'>".htmlspecialchars($data["contenu"])."</p>";
     
     if (isset($data['image'])) {
         echo "<img src='../uploads/".$data['image']."' ><br/>";
     }
+    echo "</div>"; // Fermeture de div 'content'
+    
     $time_added =$data['dateEcrit']; 
      // $notifies['date_time'] some sql datebase time
     echo $converted_time = AgoTimeFormat::makeAgo(strtotime($time_added)); 

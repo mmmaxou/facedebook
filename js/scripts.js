@@ -42,11 +42,11 @@ function editer(obj) {
     var texte = $('#well'+id+' .texte').text();
     
     console.log(titre + ',' + texte + ',' + id);
-    $("#texte-modal input[type=text]").attr("value",titre);
-    $("#texte-modal input[type=hidden]").attr("value",id);
-    $("#texte-modal textarea").text(texte);   
+    $(".texte-modal input[type=text]").attr("value",titre);
+    $(".texte-modal input[type=hidden]").attr("value",id);
+    $(".texte-modal textarea").text(texte);   
     
-    $("#texte-modal").modal();
+    $(".texte-modal").modal();
 }
 
 $('.message').hover(function() {

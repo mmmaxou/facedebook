@@ -11,10 +11,17 @@ if(!isset($_SESSION['id'])) {
 }
 
 include("entete.php");
+include("menu.php");
 
 
 // On affiche le menu
 //include("menu.php");
+echo '<div class="mur">';
+
+echo '<div id="profil">';
+echo '</div>';
+echo '<div id="main">';
+
 
 echo "<div class='timeline'>";
 // on veut afficher tous les posts des gens qui sont amis avec nous
@@ -64,7 +71,7 @@ while($line = $query->fetch()){
     echo "</div>";
     
     echo '
-<div id="texte-modal" class="modal fade" role="dialog">
+<div class="texte-modal" class="modal fade" role="dialog">
 <div class="modal-dialog">
 
 <!-- Modal content-->
@@ -92,5 +99,6 @@ while($line = $query->fetch()){
 </div>';
 
 }   
-    
+    echo '</div></div></div><div id="spacer"></div>';
+    include("pied.php");
 ?>    

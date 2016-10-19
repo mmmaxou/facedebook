@@ -103,7 +103,7 @@ if($ok == false) {
 echo "<div class='message'>";
 
 echo "<form action='../traitement/ecrire.php' method='POST' enctype='multipart/form-data'>
-        <p>Poster un message : </p>
+        <p>Poster un message : <span>Vaportexte<input name='vaportexte' type='checkbox' /></span></p>
         <input type='text' name='titre' value='Titre'>
         <textarea name='statut' placeholder='Votre message ...' ></textarea><br/>
         <input type='file' id='hiddenfile' name='imageStatut' style='display:none' onchange='getfile()'>

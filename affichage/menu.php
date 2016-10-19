@@ -49,7 +49,7 @@ echo item(lien("ami.php", "Mes amis"), array('class'=>'link'));
         echo '<p>Recherche d\'amis</p>';
 
         $search = $_POST['search'];
-        $sql = "SELECT * FROM utilisateur WHERE login LIKE '%". ."%'";
+        $sql = "SELECT * FROM utilisateur WHERE login LIKE '%".$search."%'";
         $query = $pdo->prepare($sql);
         $query -> execute();
 

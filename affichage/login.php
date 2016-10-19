@@ -8,7 +8,11 @@ include("../divers/connexion.php");
 include("../divers/balises.php");
 include("entete.php");
 
-
+echo "
+    <title>Vapor-Book </title>
+    </head>
+    <body>
+";
 
 
 

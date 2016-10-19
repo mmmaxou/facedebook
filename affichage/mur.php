@@ -149,10 +149,10 @@ function afficherPost( $data, $auteur) {
     echo lien("","E | Editer",array('class'=>'gestion', 'data-toggle'=>'modal','id'=>$data['id'],'onClick'=>'editer(this)'));
     echo lien("../traitement/effacer.php?id=".$data['id'],"X | Supprimer",array('class'=>'gestion'));
 
-    echo "</p>";
-    echo "</div>";
-    
-    echo '
+    echo "</p></div>";
+}
+
+echo '
 <div id="texte-modal" class="modal fade" role="dialog">
 <div class="modal-dialog">
 
@@ -175,15 +175,9 @@ function afficherPost( $data, $auteur) {
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
       </form>
-</div>
-
-</div>
 </div>';
 
-}
-
-echo '</div>';
-echo '</div>';
+echo '</div></div></div></div>';
 echo '<div id="spacer"></div>';
 
 

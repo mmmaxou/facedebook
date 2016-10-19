@@ -20,24 +20,34 @@ function up() {
     
     $config['upload_path'] = '../uploads';
     $config['allowed_types'] = '*';
+    
     $upload = new Upload($config);
 
+    renderArray($upload);
+    
     if ($upload->do_upload('imageStatut')) {
+        echo "ok";
         return $upload->file_name;
-    }else {
-            return false;
+    } else {
+        echo "nonono";
+        
+        return false;
     }
     
 }
 
 // Ecrire un message
-if(isset($_POST['statut'])){
+if(isset($_POST['statut']) || isset($_FILES['imageStatut'])){
     $f = up();
+    
+    echo $f == false ? "oui" : "non";
+    
     $file = $f ? $f : null;
-        $sql = "INSERT INTO ecrit VALUES(NULL,?,?,?,?,?,?)";
+    $sql = "INSERT INTO ecrit VALUES(NULL,?,?,?,?,?,?)";
     $query =$pdo->prepare($sql);
+    
     $query -> execute(array($_POST['titre'],$_POST['statut'],date("Y-m-d h:i:s  "),$file,$_SESSION['id'],$_POST['id']));
 }
 
-header('Location:'.$_SERVER['HTTP_REFERER']);
+//header('Location:'.$_SERVER['HTTP_REFERER']);
 ?>

@@ -61,11 +61,11 @@ while($line = $query->fetch()){
      
     echo "<p class='sous-texte'>Ecrit par <a href='mur.php?id=".$data['idAuteur']."'>".$auteur."</a>";
    
+     if ( $data['idAuteur'] == $_SESSION['id'] ) {     
+        echo lien("","E | Editer",array('class'=>'gestion', 'data-toggle'=>'modal','id'=>$data['id'],'onClick'=>'editer(this)'));
+        echo lien("../traitement/effacer.php?id=".$data['id'],"X | Supprimer",array('class'=>'gestion'));
 
-
-//    echo lien("../traitement/editer.php?id=".$data['id'],"E | Editer",array('class'=>'gestion', 'data-toggle'=>'modal', 'data-target'=>'#texte-modal'));
-    echo lien("","E | Editer",array('class'=>'gestion', 'data-toggle'=>'modal','id'=>$data['id'],'onClick'=>'editer(this)'));
-    echo lien("../traitement/effacer.php?id=".$data['id'],"X | Supprimer",array('class'=>'gestion'));
+    }
 
     echo "</p>";
     echo "</div>";

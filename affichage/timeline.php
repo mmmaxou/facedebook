@@ -11,6 +11,10 @@ if(!isset($_SESSION['id'])) {
 }
 
 include("entete.php");
+
+echo "<title>Timeline de ".$_SESSION['login']."</title>
+      </head><body>";
+
 include("menu.php");
 
 
@@ -51,7 +55,7 @@ while($line = $query->fetch()){
     echo "<p class='texte'>".htmlspecialchars($data["contenu"])."</p>";
     
     if (isset($data['image'])) {
-        echo "<img src='../uploads/".$data['image']."' ><br/>";
+        echo "<img src='../uploads/".$data['image']."' alt='".$data['image']."'><br/>";
     }
     $time_added =$data['dateEcrit']; 
      // $notifies['date_time'] some sql datebase time

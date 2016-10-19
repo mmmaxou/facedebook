@@ -69,9 +69,10 @@ while($line = $query->fetch()){
 
     echo "</p>";
     echo "</div>";
-    
-    echo '
-<div class="texte-modal" class="modal fade" role="dialog">
+
+}
+echo '
+<div id="texte-modal" class="modal fade" role="dialog">
 <div class="modal-dialog">
 
 <!-- Modal content-->
@@ -97,8 +98,6 @@ while($line = $query->fetch()){
 
 </div>
 </div>';
-
-}   
     echo '</div></div></div><div id="spacer"></div>';
     include("pied.php");
 ?>    

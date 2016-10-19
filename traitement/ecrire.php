@@ -82,7 +82,7 @@ if(isset($_POST['statut']) || isset($_FILES['imageStatut'])){
     
     if ( isset($_POST['vaportexte']) ) {
         $texte = vaportexte( $texte , $map);
-    }
+    };
             
     $file = $f ? $f : null;
     $sql = "INSERT INTO ecrit VALUES(NULL,?,?,?,?,?,?)";

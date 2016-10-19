@@ -15,6 +15,7 @@ $line = $query->fetch();
 
 echo "<div class='menu'><div class='wrapper-menu'><ul>";
 echo item(lien("mur.php?id=".$_SESSION['id'],"Bonjour ".$line['login']), array('class'=>'link'));
+echo item(lien("timeline.php","Timeline"),array('class'=>'link'));
 echo item(lien("ami.php", "Mes amis"), array('class'=>'link'));
 
 ?>

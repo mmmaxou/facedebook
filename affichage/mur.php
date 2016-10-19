@@ -12,6 +12,17 @@ if(!isset($_SESSION['id'])) {
 
 include("entete.php");
 
+$sql = "SELECT login FROM utilisateur WHERE id=?";
+$query = $pdo->prepare($sql);
+$query->execute(array($_GET['id']));
+$nom = $query->fetch();
+
+echo "
+    <title>Mur de ".$nom[0]."</title>
+    </head>
+    <body>
+";
+
 if(!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     // On n a pas donné le numéro de l'id de la personne dont on veut afficher le mur.
     // On affiche un message et on meurt

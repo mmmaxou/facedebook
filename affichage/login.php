@@ -73,7 +73,7 @@ echo "
                         Mot de Passe :
                    </td>
                    <td>
-                      <input type='password' name='password'></br> 
+                      <input type='password' name='password'><br/> 
                    </td>
                </tr>
                <tr>
@@ -81,7 +81,7 @@ echo "
                       Verification : 
                    </td>
                    <td>
-                       <input type='password' name='passwordConfirm'></br>
+                       <input type='password' name='passwordConfirm'><br/>
                    </td>
                </tr>
                <tr>
@@ -90,7 +90,6 @@ echo "
            </table>
      </form>
    </div>
-</div>
 
 <?php
 

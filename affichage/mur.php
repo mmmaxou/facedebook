@@ -59,7 +59,6 @@ if($_GET['id']==$_SESSION['id']) {
     if ( $line['etat'] != "ami" ) {
         $ok = false;
     } else {
-        echo 'Vous etes amis ';
         $amiASupprimer = $_GET['id'];
         echo "<a href='../traitement/supprimerAmi.php?id=$amiASupprimer' id='supprimer-ami'> X | Supprimer</a>";
         $ok = true;

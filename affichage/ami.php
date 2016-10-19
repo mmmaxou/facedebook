@@ -98,7 +98,6 @@ while ( $line = $query->fetch() ) {
 
 echo '</div>';
 echo '<div id="spacer"></div>';
-echo '</div>';
 ?>
 
 

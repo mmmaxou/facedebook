@@ -272,11 +272,11 @@ display: none;
 /* ####### MODALES ####### */
 /* ####################### */
 
-#texte-modal input[type=text], #texte-modal textarea{
+.texte-modal input[type=text], .texte-modal textarea{
     width: 100%;
     margin-bottom: 15px;
 }
-#texte-modal .modal-body {
+.texte-modal .modal-body {
     padding: 20px;
 }
 

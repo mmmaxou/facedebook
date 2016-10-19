@@ -12,6 +12,17 @@ if(!isset($_SESSION['id'])) {
 
 include("entete.php");
 
+$sql = "SELECT login FROM utilisateur WHERE id=?";
+$query = $pdo->prepare($sql);
+$query->execute(array($_GET['id']));
+$nom = $query->fetch();
+
+echo "
+    <title>Mur de ".$nom[0]."</title>
+    </head>
+    <body>
+";
+
 if(!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     // On n a pas donné le numéro de l'id de la personne dont on veut afficher le mur.
     // On affiche un message et on meurt
@@ -149,10 +160,10 @@ function afficherPost( $data, $auteur) {
     echo lien("","E | Editer",array('class'=>'gestion', 'data-toggle'=>'modal','id'=>$data['id'],'onClick'=>'editer(this)'));
     echo lien("../traitement/effacer.php?id=".$data['id'],"X | Supprimer",array('class'=>'gestion'));
 
-    echo "</p>";
-    echo "</div>";
-    
-    echo '
+    echo "</p></div>";
+}
+
+echo '
 <div id="texte-modal" class="modal fade" role="dialog">
 <div class="modal-dialog">
 
@@ -175,15 +186,9 @@ function afficherPost( $data, $auteur) {
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
       </form>
-</div>
-
-</div>
 </div>';
 
-}
-
-echo '</div>';
-echo '</div>';
+echo '</div></div></div></div>';
 echo '<div id="spacer"></div>';
 
 

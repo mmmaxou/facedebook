@@ -246,8 +246,7 @@ display: none;
 .well {
     background-color: rgba(255,255,255,0.8);
 }
-.well .content {
-    
+.well .content {    
     display: flex;
     justify-content: center;
     align-items: stretch;
@@ -265,6 +264,10 @@ display: none;
     flex-basis: 1;
     order: 1;
     margin-right: 15px;
+    max-width: 40vw;
+    max-height: 40vh;
+    object-fit: cover;
+    
 }
 
 .sous-texte, .sous-texte a{

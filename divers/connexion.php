@@ -7,20 +7,20 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 date_default_timezone_set('Europe/Paris');
 // MAXIMILIEN - IUT
-
+/*
 $host="ipabdd"; // le chemin vers le serveur (localhost dans 99% des cas)
 $db="maximilienpluchard";
 $user="maximilien.pluch";
 $passwd="h7IopQ9V";
+*/
 
 
-/*
 //connexion en local 
 $host="localhost"; 
 $db="facebook"; 
 $user="root";
 $passwd=""; 
-*/
+
 
 try {
 	// On essaie de créer une instance de PDO.

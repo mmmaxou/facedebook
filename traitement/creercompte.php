@@ -7,6 +7,7 @@ include("../divers/balises.php");
 // La requete de création de compte : INSERT INTO utilisateur VALUES(NULL,?,?)
 // Le premier parametre de la requête est le login
 // Le second parametre de la requete est le mot de passe
+renderArray($_POST);
 if(isset($_POST['login'])){
     $sql = "SELECT login FROM utilisateur WHERE login=?";
     $query = $pdo->prepare($sql);
